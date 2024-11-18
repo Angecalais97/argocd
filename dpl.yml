@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-test-app
+  labels:
+    app: argocd-test-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: argocd-test-app
+  template:
+    metadata:
+      labels:
+        app: argocd-test-app
+    spec:
+      containers:
+      - name: argocd-test-app
+        image: your-dockerhub-username/argocd-test-app:latest
+        ports:
+        - containerPort: 3000
